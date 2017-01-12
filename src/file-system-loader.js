@@ -38,7 +38,7 @@ export default class FileSystemLoader {
         fileRelativePath = path.resolve( path.join( this.root, relativeDir ), newPath )
 
       // if the path is not relative or absolute, try to resolve it in node_modules
-      if (newPath[0] !== '.' && newPath[0] !== '/') {
+      if (newPath[0] !== '.' && newPath[0] !== '/' && (newPath[1] !== ':' || newPath[2] !== '\\')) {
         try {
           fileRelativePath = require.resolve(newPath);
         }
